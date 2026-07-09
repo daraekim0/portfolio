@@ -63,7 +63,7 @@ export function Nav() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="transition-colors hover:text-foreground"
+                  className="rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent"
                 >
                   {link.label}
                 </a>
