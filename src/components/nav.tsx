@@ -53,26 +53,28 @@ export function Nav() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <nav className="flex items-center justify-between px-8 py-5 text-xs uppercase tracking-wide sm:px-12">
+      <nav className="grid grid-cols-2 items-center gap-6 px-8 py-5 text-xs uppercase tracking-wide sm:px-12">
         <a href="#top" className="font-medium normal-case tracking-normal text-sm">
           {site.name}
         </a>
-        <ul className="hidden items-center gap-8 text-muted sm:flex">
-          {site.nav.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <span className="text-muted tabular-nums">
-          {site.city}
-          {time ? ` — ${time}` : ""}
-        </span>
+        <div className="flex items-center">
+          <ul className="hidden items-center gap-8 text-muted sm:flex">
+            {site.nav.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="transition-colors hover:text-foreground"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <span className="ml-auto text-muted tabular-nums">
+            {site.city}
+            {time ? ` — ${time}` : ""}
+          </span>
+        </div>
       </nav>
     </header>
   );

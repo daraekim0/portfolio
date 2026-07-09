@@ -9,7 +9,7 @@ export function Hero() {
           <p className="text-xs uppercase tracking-wide text-muted">
             {site.prevRole}
           </p>
-          <h1 className="mt-4 text-3xl leading-snug tracking-tight sm:text-4xl md:text-5xl">
+          <h1 className="mt-4 text-2xl leading-tight tracking-tight sm:text-3xl md:text-4xl">
             {site.headline}
           </h1>
         </div>
