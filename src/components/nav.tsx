@@ -64,7 +64,9 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent"
+                  className={`rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent ${
+                    link.label === "Résumé" ? "normal-case" : ""
+                  }`}
                 >
                   {link.label}
                 </Link>
