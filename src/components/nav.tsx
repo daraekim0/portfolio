@@ -54,8 +54,8 @@ export function Nav() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <nav className="grid grid-cols-2 items-center gap-6 px-8 py-5 text-xs uppercase tracking-wide sm:px-12">
-        <Link href="/" className="font-medium normal-case tracking-normal text-sm">
+      <nav className="grid grid-cols-2 items-center gap-6 px-8 py-5 text-xs tracking-wide sm:px-12">
+        <Link href="/" className="text-sm font-medium tracking-normal">
           {site.name}
         </Link>
         <div className="flex items-center">
@@ -64,16 +64,14 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent ${
-                    link.label === "Résumé" ? "normal-case" : ""
-                  }`}
+                  className="rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <span className="ml-auto text-muted tabular-nums">
+          <span className="ml-auto uppercase text-muted tabular-nums">
             {site.city}
             {time ? ` — ${time}` : ""}
           </span>
