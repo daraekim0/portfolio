@@ -10,8 +10,8 @@ export const site = {
   city: "Seattle",
   timeZone: "America/Los_Angeles",
   nav: [
-    { href: "#work", label: "Work" },
-    { href: "#about", label: "About" },
+    { href: "/#work", label: "Work" },
+    { href: "/about", label: "About" },
     { href: "#contact", label: "Contact" },
   ],
 };
@@ -95,9 +95,17 @@ export const projects: Project[] = [
   },
 ];
 
-export const about = {
+export const aboutInfo = {
   paragraphs: [
-    "I'm a product designer who cares about the small decisions that make a product feel considered.",
-    "Currently based in Seattle, designing across research, interaction, and systems work.",
+    "I'm an undergraduate student at the University of Washington, Seattle studying Psychology specializing in Cognitive Psychology and graduating in June, 2025.",
+    "I've always been deeply empathetic, drawn to understanding people and improving their experiences. Whether it was solving problems, refining details, or making everyday interactions more meaningful, I found fulfillment in creating positive change. Over time, I realized that my ability to notice subtle nuances, especially in aesthetics, allowed me to shape experiences in ways others might not see. Wanting to understand human behavior on a deeper level, I studied psychology, exploring how people think, feel, and interact. But I didn't want to stop at observation. I wanted to create.",
+    "That's when I discovered design as the perfect medium to bridge insight with impact. To me, great design isn't just about aesthetics. It's about emotion, functionality, and usability coming together to holistically enhance people's lives. What began as a desire to help those around me evolved into a passion for creating impact at scale. Through digital experiences, I can reach beyond immediate interactions and design products that feel intuitive, meaningful, and deeply human.",
   ],
 };
+
+export const interests = [
+  "Mold clay into pottery",
+  "Craft cozy coasters with soft fur",
+  "Run on a warm, sunny day",
+  "Sip coffee in an aesthetic cafe",
+];

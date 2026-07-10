@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { site } from "@/lib/data";
 
 function useSeattleClock() {
@@ -54,19 +55,19 @@ export function Nav() {
       }`}
     >
       <nav className="grid grid-cols-2 items-center gap-6 px-8 py-5 text-xs uppercase tracking-wide sm:px-12">
-        <a href="#top" className="font-medium normal-case tracking-normal text-sm">
+        <Link href="/" className="font-medium normal-case tracking-normal text-sm">
           {site.name}
-        </a>
+        </Link>
         <div className="flex items-center">
           <ul className="hidden items-center gap-8 text-muted sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
