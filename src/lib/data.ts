@@ -12,7 +12,7 @@ export const site = {
   nav: [
     { href: "/#work", label: "Work" },
     { href: "/about", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "#", label: "Resume" },
   ],
 };
 

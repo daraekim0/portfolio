@@ -59,7 +59,7 @@ export function Nav() {
           {site.name}
         </Link>
         <div className="flex items-center">
-          <ul className="hidden items-center gap-8 text-muted sm:flex">
+          <ul className="hidden items-center gap-5 text-muted sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
                 <Link
