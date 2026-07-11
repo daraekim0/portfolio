@@ -12,7 +12,7 @@ export const site = {
   nav: [
     { href: "/#work", label: "Work" },
     { href: "/about", label: "About" },
-    { href: "#", label: "Résumé" },
+    { href: "#", label: "Resume" },
   ],
 };
 
@@ -20,7 +20,7 @@ export const nodes = [
   { label: "Email", href: "mailto:dare11021102@gmail.com" },
   { label: "LinkedIn", href: "#" },
   { label: "Instagram", href: "#" },
-  { label: "Résumé", href: "#" },
+  { label: "Resume", href: "#" },
 ];
 
 export type Project = {

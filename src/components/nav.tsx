@@ -59,7 +59,7 @@ export function Nav() {
           {site.name}
         </Link>
         <div className="flex items-center">
-          <ul className="hidden items-center gap-5 text-sm font-medium uppercase tracking-wide sm:flex">
+          <ul className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
                 <Link
