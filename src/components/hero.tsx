@@ -2,7 +2,7 @@ import { site } from "@/lib/data";
 
 export function Hero() {
   return (
-    <section id="top" className="px-8 pt-24 pb-16 sm:px-12 sm:pt-32">
+    <section id="top" className="px-[5%] pt-24 pb-16 sm:pt-32">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div />
         <div>

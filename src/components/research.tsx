@@ -5,7 +5,7 @@ import { research } from "@/lib/data";
 
 export function Research() {
   return (
-    <section id="research" className="px-8 py-16 sm:px-12">
+    <section id="research" className="px-[5%] py-16">
       <div className="flex items-center gap-2 border-t border-line pt-6 text-xs uppercase tracking-wide text-muted">
         <FileText className="h-3.5 w-3.5" />
         Research

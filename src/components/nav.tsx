@@ -54,12 +54,12 @@ export function Nav() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <nav className="grid grid-cols-2 items-center gap-6 px-8 py-5 text-xs tracking-wide sm:px-12">
+      <nav className="grid grid-cols-2 items-center gap-6 px-[5%] py-5 text-xs tracking-wide">
         <Link href="/" className="text-sm font-medium tracking-normal">
           {site.name}
         </Link>
         <div className="flex items-center">
-          <ul className="hidden items-center gap-5 sm:flex">
+          <ul className="hidden items-center gap-5 text-sm font-medium uppercase tracking-wide sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
                 <Link

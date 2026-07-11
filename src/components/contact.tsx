@@ -3,7 +3,7 @@ import { site, nodes } from "@/lib/data";
 
 export function Contact() {
   return (
-    <footer id="contact" className="border-t border-line px-8 py-16 sm:px-12">
+    <footer id="contact" className="border-t border-line px-[5%] py-16">
       <p className="text-xs uppercase tracking-wide text-muted">
         Let&apos;s work together
       </p>

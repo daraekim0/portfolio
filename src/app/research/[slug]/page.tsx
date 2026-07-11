@@ -52,7 +52,7 @@ export default async function ResearchPaperPage({
     <>
       <Nav />
       <main className="flex-1">
-        <header className="px-8 pt-16 pb-12 sm:px-12 sm:pt-24">
+        <header className="px-[5%] pt-16 pb-12 sm:pt-24">
           <p className="text-xs uppercase tracking-wide text-muted">
             {paper.venue}
           </p>
@@ -88,7 +88,7 @@ export default async function ResearchPaperPage({
           </div>
         </header>
 
-        <section className="border-t border-line px-8 py-12 sm:px-12">
+        <section className="border-t border-line px-[5%] py-12">
           <h2 className="text-xs uppercase tracking-wide text-muted">
             Overview
           </h2>
@@ -102,7 +102,7 @@ export default async function ResearchPaperPage({
         {paper.sections.map((section) => (
           <section
             key={section.heading}
-            className="border-t border-line px-8 py-12 sm:px-12"
+            className="border-t border-line px-[5%] py-12"
           >
             <h2 className="text-xs uppercase tracking-wide text-muted">
               {section.heading}
