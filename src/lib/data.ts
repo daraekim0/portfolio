@@ -95,17 +95,23 @@ export const projects: Project[] = [
   },
 ];
 
+export type ResearchSection = {
+  heading: string;
+  intro?: string;
+  items?: { title: string; body: string }[];
+};
+
 export type ResearchPaper = {
   slug: string;
   year: string;
   venue: string;
   title: string;
   role: string;
-  paragraphs: string[];
-  method: string[];
-  findings: string[];
-  contribution: string[];
-  link: string;
+  authors: string[];
+  doi: string;
+  summary: string;
+  overview: string[];
+  sections: ResearchSection[];
 };
 
 export const research: ResearchPaper[] = [
@@ -114,27 +120,91 @@ export const research: ResearchPaper[] = [
     year: "2026",
     venue: "CHI 2026",
     title:
-      "Rethinking Mis/disinformation: A Holistic Community-Based Model for Youth Resilience",
+      "Rethinking Misinformation: A Holistic Community Model for Youth Resilience",
     role: "Co-author",
-    paragraphs: [
-      "Most digital media literacy research treats misinformation as a purely cognitive problem — teach children to reason better, and they'll spot the fake. This study asks what that framing misses: the social, emotional, and cultural forces that shape how children actually encounter and spread mis/disinformation.",
-      "Over 2.5 years, we ran co-design workshops with 26 children (ages 6–11) across three intergenerational design teams, using the Cooperative Inquiry method to let children articulate how misinformation feels — not just how it's identified.",
+    authors: [
+      "Jason Yip",
+      "Michele Newman",
+      "Runhua Zhao",
+      "Darae Kim",
+      "Jan R. Lim",
+      "Matthew Kyle Pedraja",
+      "Swati Sachdeva",
+      "Xiaoyu Zheng",
+      "Yifang Zhou",
+      "Chris Coward",
+      "Jin Ha Lee",
     ],
-    method: [
-      "26 co-design sessions across three intergenerational teams (2022–2023)",
-      "Cooperative Inquiry — equal design partnerships between children and adult researchers",
-      "Two settings: a long-term lab team and two urban public library sites",
+    doi: "https://dl.acm.org/doi/10.1145/3772318.3790876",
+    summary:
+      "A 2.5-year co-design study with children ages 6–11 showing why misinformation resilience can't be taught through fact-checking alone — and proposing a community-based model that ties cognitive, socio-emotional, and sociocultural learning together.",
+    overview: [
+      "Most digital media literacy research treats misinformation as a purely cognitive problem: teach children to reason better, and they'll spot the fake. But critics argue this framing neglects the social, emotional, and cultural contexts in which mis/disinformation is actually created and spread — the peer pressure, the parasocial trust in influencers, the financial incentives baked into platforms.",
+      "This study expands beyond the cognitive model by examining how children conceptualize mis/disinformation through socio-emotional learning (SEL) and sociocultural (SC) lenses. Over a 2.5-year period, we conducted 26 co-design workshops with children ages 6–11, letting them articulate how misinformation feels and circulates in their world — not just how it's identified.",
     ],
-    findings: [
-      "Children are acutely aware of emotional manipulation, peer pressure, and financial incentives behind misinformation",
-      "Trust online is shaped by fame signals and view counts, not source credibility",
-      "Community support — family, librarians, peers — is where children actually turn when unsure",
+    sections: [
+      {
+        heading: "Method",
+        intro:
+          "We used Cooperative Inquiry, a participatory design method built on equal design partnerships between children and adult researchers. Rather than testing children's literacy with pre/post measures, sustained co-design partnerships let children talk honestly about complex emotional topics over time.",
+        items: [
+          {
+            title: "26 sessions, three intergenerational teams",
+            body: "Eight sessions with a long-term university co-design team (21 children, 2022–2023) and eighteen sessions across two urban public library sites (28 children), where pre-service librarians facilitated the design work.",
+          },
+          {
+            title: "Design-based elicitation",
+            body: "Children co-designed play-based misinformation activities — fake viral videos, influencer skits, posters debating online claims — surfacing beliefs that interviews alone rarely reach.",
+          },
+        ],
+      },
+      {
+        heading: "Findings",
+        intro:
+          "Analysis surfaced six themes spanning the emotional, social, and economic life of misinformation for children:",
+        items: [
+          {
+            title: "Empathy is the hard part",
+            body: "Children struggled to imagine that others could fall for claims they themselves found obviously false — a theory-of-mind gap that purely cognitive training doesn't address.",
+          },
+          {
+            title: "Social pressure shapes belief",
+            body: "Peer dynamics and the desire to belong influenced what children shared and endorsed, sometimes against their own judgment.",
+          },
+          {
+            title: "Fame and analytics stand in for credibility",
+            body: "Children used view counts, subscriber numbers, and celebrity as proxies for trustworthiness rather than source quality.",
+          },
+          {
+            title: "Children see the money",
+            body: "They recognized 'YouTube voice,' sponsorships, and financial ties as emotionally manipulative tactics — and satirized them in their designs.",
+          },
+          {
+            title: "Misinformation is communal",
+            body: "False claims circulate through family and community — even parents tell 'watermelon seed' stories — so children's trust networks are both the problem and the resource.",
+          },
+          {
+            title: "Community is where children turn",
+            body: "When unsure, children reached for parents, librarians, and peers rather than verification tools.",
+          },
+        ],
+      },
+      {
+        heading: "Contribution",
+        intro:
+          "We propose a community-based model of design for youth misinformation resilience.",
+        items: [
+          {
+            title: "Beyond the individual reasoner",
+            body: "If conspiracy theorizing is collective sensemaking — where emotion, identity, and storytelling beat accuracy — then resilience must also be built collectively, not one fact-checker at a time.",
+          },
+          {
+            title: "Three lenses, one model",
+            body: "The model ties cognitive, socio-emotional, and sociocultural supports together, giving designers concrete direction for building children's epistemic resilience with their communities rather than for them.",
+          },
+        ],
+      },
     ],
-    contribution: [
-      "A community-based design model connecting cognitive, socio-emotional, and sociocultural lenses",
-      "Design guidance for building children's epistemic resilience, beyond fact-checking skills",
-    ],
-    link: "#",
   },
   {
     slug: "remix-authorship",
@@ -143,25 +213,74 @@ export const research: ResearchPaper[] = [
     title:
       "Pringles, Prangles, or Prongles? Negotiating Creative Authorship in Children's Remix Practices",
     role: "Co-author",
-    paragraphs: [
-      "Remix is how children create today — reusing, recombining, and reinterpreting existing cultural artifacts with digital tools. But what does 'my work' mean when everything is built from someone else's? This study examines how children develop their sense of authorship and ownership through remixing.",
-      "We conducted six participatory design sessions with 16 children (ages 5–11), moving from physical collage remixing to digital tools, to trace how the medium itself shapes children's beliefs about creative ownership.",
+    authors: [
+      "Michele Newman",
+      "Daeun Yoo",
+      "Runhua Zhao",
+      "Emily Tuy",
+      "Hannah Yi",
+      "Darae Kim",
+      "Jin Ha Lee",
+      "Jason Yip",
     ],
-    method: [
-      "Six Cooperative Inquiry design sessions with 16 children over three months",
-      "Progression from physical remix (layered collage) to digital remix tools",
-      "Sessions covering perception, authorship, and the ethics of creativity-support tools",
+    doi: "https://dl.acm.org/doi/10.1145/3772318.3791311",
+    summary:
+      "Six participatory design sessions with children ages 5–11 exploring what 'my work' means when everything is built from someone else's — culminating in the Creative Agency Framework for designing creativity-support tools.",
+    overview: [
+      "Remix is how children create today: reusing, recombining, and reinterpreting existing cultural artifacts with digital tools. But the implications of remix for authorship remain largely unexamined — what does ownership mean to a child whose creation started as someone else's drawing, song, or meme?",
+      "We conducted six participatory design sessions with 16 children ages 5–11, moving from physical collage remixing to digital tools, to trace how children develop their understanding of authorship and creativity — and how the medium itself shapes those beliefs.",
     ],
-    findings: [
-      "Children treat remixing as a negotiated, interpretive process — not copying",
-      "The medium mediates ownership: physical and digital remixing produce different authorship beliefs",
-      "Children actively negotiate control and reuse rules with peers while creating",
+    sections: [
+      {
+        heading: "Method",
+        intro:
+          "Six 90-minute Cooperative Inquiry design sessions over three months (February–April 2025), each combining snack time, circle time, group design, and discussion.",
+        items: [
+          {
+            title: "From physical to digital",
+            body: "Early sessions explored remix with physical media (layered collage on paper); later sessions moved to digital remixing and the design of creativity-support tools, letting us compare how each medium shaped children's reasoning.",
+          },
+          {
+            title: "Authorship and ethics by design",
+            body: "Final sessions had children design their own remix tools — like a 'Portable Remixer' — surfacing what permission, credit, and control should look like from a child's perspective.",
+          },
+        ],
+      },
+      {
+        heading: "Findings",
+        intro:
+          "Children treated remixing as a negotiated, interpretive process — not copying. Three threads ran through their practices:",
+        items: [
+          {
+            title: "Authorship as interpretation",
+            body: "Children remixed with three interpretive priorities — personal expression, respect for the original creator, and communication — making remix a site of ethical reasoning, not just production.",
+          },
+          {
+            title: "Authorship as mediation",
+            body: "The medium changed the experience of ownership: digital media's easy copying and permanence made creative acts feel more visible and consequential than physical collage, and software norms carried their own assumptions about creativity and control.",
+          },
+          {
+            title: "Authorship as ownership",
+            body: "Children voiced strong beliefs about permission — 'you should ask the person who created it' — yet their actual practices diverged, revealing a tension between stated values and what tools make easy.",
+          },
+        ],
+      },
+      {
+        heading: "Contribution",
+        intro:
+          "We introduce the Creative Agency Framework: three pathways tracing how remix agency emerges through interpretation and mediation.",
+        items: [
+          {
+            title: "Three pathways of creative agency",
+            body: "Each pathway pairs a form of agency with an authorship concept — assertive agency with the author, dialogic agency with the co-creator, and facilitative agency with the steward — along with the 'myths' about creativity that software makes feel natural.",
+          },
+          {
+            title: "Rebalancing creativity support",
+            body: "Most creativity-support tools privilege the expressive, sole-author pathway. We argue for tools that also recognize negotiated and stewardship forms of creativity, so children can see themselves as both creators and cultural producers.",
+          },
+        ],
+      },
     ],
-    contribution: [
-      "The Creative Agency Framework — three pathways pairing agency types (assertive, dialogic, facilitative) with authorship roles (author, co-creator, steward)",
-      "Design implications for creativity-support tools that let children see themselves as both creators and cultural producers",
-    ],
-    link: "#",
   },
 ];
 
