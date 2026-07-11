@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Nav } from "@/components/nav";
-import { Contact } from "@/components/contact";
-import { research, site } from "@/lib/data";
+import { research, site, type ResearchImage } from "@/lib/data";
 
 export function generateStaticParams() {
   return research.map((paper) => ({ slug: paper.slug }));
@@ -19,6 +19,26 @@ export async function generateMetadata({
     title: `${paper.title} — ${site.name}`,
     description: paper.summary,
   };
+}
+
+function Figure({ image }: { image: ResearchImage }) {
+  return (
+    <figure>
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        sizes="(max-width: 640px) 100vw, 80vw"
+        className="h-auto w-full bg-surface"
+      />
+      {image.caption && (
+        <figcaption className="mt-3 text-xs text-muted">
+          {image.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
 }
 
 export default async function ResearchPaperPage({
@@ -62,6 +82,10 @@ export default async function ResearchPaperPage({
             Read the paper
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </a>
+
+          <div className="mt-12">
+            <Figure image={paper.hero} />
+          </div>
         </header>
 
         <section className="border-t border-line px-8 py-12 sm:px-12">
@@ -88,6 +112,11 @@ export default async function ResearchPaperPage({
                 {section.intro}
               </p>
             )}
+            {section.image && (
+              <div className="mt-8 max-w-3xl">
+                <Figure image={section.image} />
+              </div>
+            )}
             {section.items && (
               <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
                 {section.items.map((item) => (
@@ -103,7 +132,6 @@ export default async function ResearchPaperPage({
           </section>
         ))}
       </main>
-      <Contact />
     </>
   );
 }

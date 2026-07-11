@@ -95,10 +95,19 @@ export const projects: Project[] = [
   },
 ];
 
+export type ResearchImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
 export type ResearchSection = {
   heading: string;
   intro?: string;
   items?: { title: string; body: string }[];
+  image?: ResearchImage;
 };
 
 export type ResearchPaper = {
@@ -110,6 +119,8 @@ export type ResearchPaper = {
   authors: string[];
   doi: string;
   summary: string;
+  cover: ResearchImage;
+  hero: ResearchImage;
   overview: string[];
   sections: ResearchSection[];
 };
@@ -138,6 +149,20 @@ export const research: ResearchPaper[] = [
     doi: "https://dl.acm.org/doi/10.1145/3772318.3790876",
     summary:
       "A 2.5-year co-design study with children ages 6–11 showing why misinformation resilience can't be taught through fact-checking alone — and proposing a community-based model that ties cognitive, socio-emotional, and sociocultural learning together.",
+    cover: {
+      src: "/research/misinfo-cover.jpg",
+      width: 1000,
+      height: 576,
+      alt: "Children and adults co-designing around a table covered in large sheets of paper",
+    },
+    hero: {
+      src: "/research/misinfo-hero.jpg",
+      width: 3168,
+      height: 576,
+      alt: "Three co-design session photos: children designing parental support for misinformation, debating an online ghost video, and designing zero fruit waste hacks",
+      caption:
+        "Children and adults co-designing mis/disinformation concepts across the WeDesign and WeLibraries teams.",
+    },
     overview: [
       "Most digital media literacy research treats misinformation as a purely cognitive problem: teach children to reason better, and they'll spot the fake. But critics argue this framing neglects the social, emotional, and cultural contexts in which mis/disinformation is actually created and spread — the peer pressure, the parasocial trust in influencers, the financial incentives baked into platforms.",
       "This study expands beyond the cognitive model by examining how children conceptualize mis/disinformation through socio-emotional learning (SEL) and sociocultural (SC) lenses. Over a 2.5-year period, we conducted 26 co-design workshops with children ages 6–11, letting them articulate how misinformation feels and circulates in their world — not just how it's identified.",
@@ -162,6 +187,14 @@ export const research: ResearchPaper[] = [
         heading: "Findings",
         intro:
           "Analysis surfaced six themes spanning the emotional, social, and economic life of misinformation for children:",
+        image: {
+          src: "/research/misinfo-fig-b.jpg",
+      width: 1002,
+      height: 576,
+          alt: "Children in a library watching and debating an online video of a ghost during a co-design session",
+          caption:
+            "WeLibraries children debating whether an online ghost video is real — trust, emotion, and evidence colliding in real time.",
+        },
         items: [
           {
             title: "Empathy is the hard part",
@@ -193,6 +226,14 @@ export const research: ResearchPaper[] = [
         heading: "Contribution",
         intro:
           "We propose a community-based model of design for youth misinformation resilience.",
+        image: {
+          src: "/research/misinfo-fig-c.jpg",
+      width: 1150,
+      height: 576,
+          alt: "Children presenting a wall of co-designed zero fruit waste hack posters at a library",
+          caption:
+            "Rolling Way children co-designing zero fruit waste hacks — community sensemaking in action.",
+        },
         items: [
           {
             title: "Beyond the individual reasoner",
@@ -226,6 +267,20 @@ export const research: ResearchPaper[] = [
     doi: "https://dl.acm.org/doi/10.1145/3772318.3791311",
     summary:
       "Six participatory design sessions with children ages 5–11 exploring what 'my work' means when everything is built from someone else's — culminating in the Creative Agency Framework for designing creativity-support tools.",
+    cover: {
+      src: "/research/remix-cover.png",
+      width: 958,
+      height: 513,
+      alt: "A child's marker drawing of remixed video game characters, annotated with handwritten rules for reuse",
+    },
+    hero: {
+      src: "/research/remix-cover.png",
+      width: 958,
+      height: 513,
+      alt: "A child's marker drawing of remixed video game characters, annotated with handwritten rules for reuse",
+      caption:
+        "Jerold's character illustration from Design Session 4, annotated with his own guidelines for potential reuse.",
+    },
     overview: [
       "Remix is how children create today: reusing, recombining, and reinterpreting existing cultural artifacts with digital tools. But the implications of remix for authorship remain largely unexamined — what does ownership mean to a child whose creation started as someone else's drawing, song, or meme?",
       "We conducted six participatory design sessions with 16 children ages 5–11, moving from physical collage remixing to digital tools, to trace how children develop their understanding of authorship and creativity — and how the medium itself shapes those beliefs.",
@@ -235,6 +290,14 @@ export const research: ResearchPaper[] = [
         heading: "Method",
         intro:
           "Six 90-minute Cooperative Inquiry design sessions over three months (February–April 2025), each combining snack time, circle time, group design, and discussion.",
+        image: {
+          src: "/research/remix-method.jpg",
+      width: 512,
+      height: 384,
+          alt: "A handmade 'Portable Remixer' prototype built from decorated tins, tape, and paper by children",
+          caption:
+            "Jerold and Duncan's 'Portable Remixer' design from Design Session 5.",
+        },
         items: [
           {
             title: "From physical to digital",
@@ -250,6 +313,14 @@ export const research: ResearchPaper[] = [
         heading: "Findings",
         intro:
           "Children treated remixing as a negotiated, interpretive process — not copying. Three threads ran through their practices:",
+        image: {
+          src: "/research/remix-findings.png",
+      width: 2948,
+      height: 756,
+          alt: "A spectrum diagram spanning Author, Co-Creator, and Steward, mapping interpretive stance, ethical attention, and remix tactics",
+          caption:
+            "Children's interpretive stances in remix span a spectrum from self-driven author to deferential steward.",
+        },
         items: [
           {
             title: "Authorship as interpretation",
@@ -269,6 +340,14 @@ export const research: ResearchPaper[] = [
         heading: "Contribution",
         intro:
           "We introduce the Creative Agency Framework: three pathways tracing how remix agency emerges through interpretation and mediation.",
+        image: {
+          src: "/research/remix-framework.png",
+      width: 2436,
+      height: 1528,
+          alt: "The Creative Agency Framework diagram: expressive, negotiated, and stewardship pathways flowing from interpretive priority through software mediation to myths of creative agency",
+          caption:
+            "The Creative Agency Framework — three pathways from interpretive priority, through software mediation, to myths of creative agency.",
+        },
         items: [
           {
             title: "Three pathways of creative agency",
