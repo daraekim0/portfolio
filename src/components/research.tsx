@@ -11,7 +11,7 @@ export function Research() {
         Research
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-x-20 gap-y-16 sm:grid-cols-2 lg:gap-x-28">
+      <div className="mt-10 grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2">
         {research.map((paper) => (
           <Link
             key={paper.slug}
@@ -23,7 +23,7 @@ export function Research() {
               {paper.title}
             </h3>
 
-            <div className="relative mt-6 aspect-[16/10] w-full overflow-hidden bg-surface">
+            <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden bg-surface">
               <Image
                 src={paper.cover.src}
                 alt={paper.cover.alt}
