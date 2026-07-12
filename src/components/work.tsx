@@ -3,9 +3,19 @@ import { projects, type Project } from "@/lib/data";
 import { ProjectMockup } from "@/components/mockups";
 import { Disclosure } from "@/components/disclosure";
 
-function ProjectRow({ project }: { project: Project }) {
+function ProjectRow({
+  project,
+  tinted,
+}: {
+  project: Project;
+  tinted: boolean;
+}) {
   return (
-    <div className="grid grid-cols-1 gap-10 border-t border-line py-14 first:border-t-0 lg:grid-cols-[280px_1fr]">
+    <div
+      className={`grid grid-cols-1 gap-10 px-[5%] py-14 lg:grid-cols-[280px_1fr] ${
+        tinted ? "bg-surface" : "bg-background"
+      }`}
+    >
       <div>
         <span className="text-xs text-muted">{project.year}</span>
         <h3 className="mt-2 text-xl tracking-tight">{project.title}</h3>
@@ -36,7 +46,11 @@ function ProjectRow({ project }: { project: Project }) {
         </div>
       </div>
 
-      <div className="aspect-[4/3] w-full bg-surface p-4 sm:p-8">
+      <div
+        className={`aspect-[4/3] w-full p-4 sm:p-8 ${
+          tinted ? "bg-background" : "bg-surface"
+        }`}
+      >
         <ProjectMockup type={project.mockup} />
       </div>
     </div>
@@ -45,15 +59,19 @@ function ProjectRow({ project }: { project: Project }) {
 
 export function Work() {
   return (
-    <section id="work" className="px-[5%] py-16">
-      <div className="flex items-center gap-2 border-t border-line pt-6 text-xs uppercase tracking-wide text-muted">
+    <section id="work" className="py-16">
+      <div className="flex items-center gap-2 border-t border-line px-[5%] pt-6 pb-10 text-xs uppercase tracking-wide text-muted">
         <LayoutGrid className="h-3.5 w-3.5" />
         Selected Case Studies
       </div>
 
       <div>
-        {projects.map((project) => (
-          <ProjectRow key={project.slug} project={project} />
+        {projects.map((project, i) => (
+          <ProjectRow
+            key={project.slug}
+            project={project}
+            tinted={i % 2 === 1}
+          />
         ))}
       </div>
     </section>

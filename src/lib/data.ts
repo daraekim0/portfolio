@@ -110,6 +110,11 @@ export type ResearchSection = {
   image?: ResearchImage;
 };
 
+export type ResearchStat = {
+  value: string;
+  label: string;
+};
+
 export type ResearchPaper = {
   slug: string;
   year: string;
@@ -122,6 +127,7 @@ export type ResearchPaper = {
   cover: ResearchImage;
   hero: ResearchImage;
   overview: string[];
+  stats: ResearchStat[];
   sections: ResearchSection[];
 };
 
@@ -166,6 +172,11 @@ export const research: ResearchPaper[] = [
     overview: [
       "Most digital media literacy research treats misinformation as a purely cognitive problem: teach children to reason better, and they'll spot the fake. But critics argue this framing neglects the social, emotional, and cultural contexts in which mis/disinformation is actually created and spread — the peer pressure, the parasocial trust in influencers, the financial incentives baked into platforms.",
       "This study expands beyond the cognitive model by examining how children conceptualize mis/disinformation through socio-emotional learning (SEL) and sociocultural (SC) lenses. Over a 2.5-year period, we conducted 26 co-design workshops with children ages 6–11, letting them articulate how misinformation feels and circulates in their world — not just how it's identified.",
+    ],
+    stats: [
+      { value: "26", label: "co-design sessions" },
+      { value: "3", label: "intergenerational teams" },
+      { value: "2.5 yrs", label: "study duration" },
     ],
     sections: [
       {
@@ -284,6 +295,11 @@ export const research: ResearchPaper[] = [
     overview: [
       "Remix is how children create today: reusing, recombining, and reinterpreting existing cultural artifacts with digital tools. But the implications of remix for authorship remain largely unexamined — what does ownership mean to a child whose creation started as someone else's drawing, song, or meme?",
       "We conducted six participatory design sessions with 16 children ages 5–11, moving from physical collage remixing to digital tools, to trace how children develop their understanding of authorship and creativity — and how the medium itself shapes those beliefs.",
+    ],
+    stats: [
+      { value: "6", label: "design sessions" },
+      { value: "16", label: "child co-designers" },
+      { value: "3 mo", label: "study duration" },
     ],
     sections: [
       {

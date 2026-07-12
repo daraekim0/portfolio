@@ -88,21 +88,35 @@ export default async function ResearchPaperPage({
           </div>
         </header>
 
-        <section className="border-t border-line px-[5%] py-12">
+        <section className="bg-surface px-[5%] py-16">
           <h2 className="text-xs uppercase tracking-wide text-muted">
             Overview
           </h2>
-          <div className="mt-4 max-w-3xl space-y-4 text-base leading-relaxed">
-            {paper.overview.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+          <div className="mt-4 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto]">
+            <div className="max-w-3xl space-y-4 text-lg leading-relaxed">
+              {paper.overview.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-x-10 gap-y-6 lg:flex-col lg:gap-6 lg:border-l lg:border-line lg:pl-10">
+              {paper.stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-4xl tracking-tight text-accent">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 max-w-[10rem] text-xs uppercase tracking-wide text-muted">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {paper.sections.map((section) => (
+        {paper.sections.map((section, sIndex) => (
           <section
             key={section.heading}
-            className="border-t border-line px-[5%] py-12"
+            className={`px-[5%] py-16 ${sIndex % 2 === 0 ? "bg-background" : "bg-surface"}`}
           >
             <h2 className="text-xs uppercase tracking-wide text-muted">
               {section.heading}
@@ -118,10 +132,13 @@ export default async function ResearchPaperPage({
               </div>
             )}
             {section.items && (
-              <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
-                {section.items.map((item) => (
-                  <div key={item.title} className="border-t border-line pt-4">
-                    <h3 className="text-sm font-medium">{item.title}</h3>
+              <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+                {section.items.map((item, i) => (
+                  <div key={item.title}>
+                    <span className="text-xs text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-2 text-sm font-medium">{item.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
                       {item.body}
                     </p>

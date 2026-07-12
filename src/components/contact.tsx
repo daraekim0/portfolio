@@ -17,15 +17,18 @@ export function Contact() {
 
       <div className="mt-14 max-w-sm">
         <h2 className="text-xs uppercase tracking-wide text-muted">Nodes</h2>
-        <ul className="mt-4">
+        <ul className="mt-4 space-y-1">
           {nodes.map((node, i) => (
-            <li key={node.label} className="border-t border-line first:border-t-0">
+            <li key={node.label}>
               <a
                 href={node.href}
-                className="group flex items-center justify-between py-3 text-sm"
+                className="group flex items-center justify-between py-2 text-sm"
               >
                 <span>
-                  {String(i + 1).padStart(2, "0")}. {node.label}
+                  <span className="text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>{" "}
+                  {node.label}
                 </span>
                 <ArrowUpRight className="h-4 w-4 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
               </a>
