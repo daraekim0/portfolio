@@ -37,7 +37,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="grid grid-cols-1 gap-10 bg-surface px-[5%] py-16 sm:grid-cols-2">
+        <section className="grid grid-cols-1 gap-10 px-[5%] py-16 sm:grid-cols-2">
           <div>
             <h2 className="text-xs uppercase tracking-wide text-muted">
               Things I Love To Do

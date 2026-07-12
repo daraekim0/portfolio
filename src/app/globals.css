@@ -33,17 +33,3 @@ body {
   background: var(--accent);
   color: var(--foreground);
 }
-
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-8%, -6%) scale(1.15);
-  }
-}
-
-.animate-drift {
-  animation: drift 18s ease-in-out infinite;
-}
