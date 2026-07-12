@@ -150,16 +150,16 @@ export const research: ResearchPaper[] = [
     summary:
       "A 2.5-year co-design study with children ages 6–11 showing why misinformation resilience can't be taught through fact-checking alone — and proposing a community-based model that ties cognitive, socio-emotional, and sociocultural learning together.",
     cover: {
-      src: "/research/misinfo-cover.jpg",
-      width: 1000,
-      height: 576,
-      alt: "Children and adults co-designing around a table covered in large sheets of paper",
+      src: "/research/misinfo-front.jpg",
+      width: 1675,
+      height: 939,
+      alt: "Children and adult researchers co-designing around a table covered in large sheets of paper",
     },
     hero: {
-      src: "/research/misinfo-hero.jpg",
-      width: 3168,
-      height: 576,
-      alt: "Three co-design session photos: children designing parental support for misinformation, debating an online ghost video, and designing zero fruit waste hacks",
+      src: "/research/misinfo-front.jpg",
+      width: 1675,
+      height: 939,
+      alt: "Children and adult researchers co-designing around a table covered in large sheets of paper",
       caption:
         "Children and adults co-designing mis/disinformation concepts across the WeDesign and WeLibraries teams.",
     },

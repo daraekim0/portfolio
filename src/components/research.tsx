@@ -11,7 +11,7 @@ export function Research() {
         Research
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-x-10 gap-y-16 sm:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-x-20 gap-y-16 sm:grid-cols-2 lg:gap-x-28">
         {research.map((paper) => (
           <Link
             key={paper.slug}
