@@ -2,6 +2,7 @@ export const site = {
   name: "Rae Kim",
   role: "Product Designer",
   prevRole: "Prev. Product Design Intern @ Acme",
+  availability: "Open to Summer 2027 Internships",
   headline:
     "Digital product designer crafting clear, considered experiences for complex problems.",
   intro:
