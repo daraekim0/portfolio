@@ -9,7 +9,6 @@ export const site = {
     "I work across research, interaction design, and design systems to help teams ship products people actually understand.",
   email: "dare11021102@gmail.com",
   city: "Seattle",
-  timeZone: "America/Los_Angeles",
   nav: [
     { href: "/#work", label: "Work" },
     { href: "/about", label: "About" },

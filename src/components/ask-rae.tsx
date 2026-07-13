@@ -1,20 +1,43 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import { Sparkles, X } from "lucide-react";
 import { site } from "@/lib/data";
 
 const CANNED_ANSWER =
   "That's a great line to ask about. I write everything on this site myself — from the case studies to this little AI panel — so if you want the real story behind it, the fastest way is just to email me.";
 
-export function AskRaeLLM() {
+const INTRO_ANSWER =
+  "Hi, I'm a small AI panel trained to talk about Rae's work. Highlight any line on the site and ask about it, or just email her directly below.";
+
+type AskRaeContextValue = {
+  openWithQuote: (quote: string) => void;
+  openBlank: () => void;
+};
+
+const AskRaeContext = createContext<AskRaeContextValue | null>(null);
+
+export function useAskRae() {
+  const ctx = useContext(AskRaeContext);
+  if (!ctx) throw new Error("useAskRae must be used within AskRaeProvider");
+  return ctx;
+}
+
+export function AskRaeProvider({ children }: { children: ReactNode }) {
   const [selection, setSelection] = useState<{
     text: string;
     x: number;
     y: number;
   } | null>(null);
-  const [panelQuote, setPanelQuote] = useState<string | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [panel, setPanel] = useState<{ open: boolean; quote: string | null }>(
+    { open: false, quote: null },
+  );
 
   useEffect(() => {
     const onSelectionChange = () => {
@@ -46,20 +69,26 @@ export function AskRaeLLM() {
   }, []);
 
   useEffect(() => {
-    if (!panelQuote) return;
+    if (!panel.open) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setPanelQuote(null);
+      if (e.key === "Escape") setPanel({ open: false, quote: null });
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [panelQuote]);
+  }, [panel.open]);
+
+  const openWithQuote = (quote: string) => setPanel({ open: true, quote });
+  const openBlank = () => setPanel({ open: true, quote: null });
+  const close = () => setPanel({ open: false, quote: null });
 
   return (
-    <div ref={containerRef}>
+    <AskRaeContext.Provider value={{ openWithQuote, openBlank }}>
+      {children}
+
       {selection && (
         <button
           onClick={() => {
-            setPanelQuote(selection.text);
+            openWithQuote(selection.text);
             setSelection(null);
             window.getSelection()?.removeAllRanges();
           }}
@@ -72,22 +101,22 @@ export function AskRaeLLM() {
           className="z-50 flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs text-background shadow-lg transition-transform hover:scale-105"
         >
           <Sparkles className="h-3.5 w-3.5" />
-          Ask RaeLLM
+          Ask Rae
         </button>
       )}
 
       <div
         className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-background shadow-2xl transition-transform duration-300 ${
-          panelQuote ? "translate-x-0" : "translate-x-full"
+          panel.open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
           <span className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted">
             <Sparkles className="h-3.5 w-3.5" />
-            Ask RaeLLM
+            Ask Rae
           </span>
           <button
-            onClick={() => setPanelQuote(null)}
+            onClick={close}
             className="text-muted transition-colors hover:text-foreground"
             aria-label="Close"
           >
@@ -95,19 +124,25 @@ export function AskRaeLLM() {
           </button>
         </div>
 
-        {panelQuote && (
+        {panel.open && (
           <div className="flex-1 overflow-y-auto px-6 py-6">
-            <p className="text-xs uppercase tracking-wide text-muted">
-              Your quote
-            </p>
-            <blockquote className="mt-2 border-l-2 border-accent pl-3 text-sm italic text-muted">
-              &ldquo;{panelQuote}&rdquo;
-            </blockquote>
+            {panel.quote ? (
+              <>
+                <p className="text-xs uppercase tracking-wide text-muted">
+                  Your quote
+                </p>
+                <blockquote className="mt-2 border-l-2 border-accent pl-3 text-sm italic text-muted">
+                  &ldquo;{panel.quote}&rdquo;
+                </blockquote>
+              </>
+            ) : null}
 
             <p className="mt-6 text-xs uppercase tracking-wide text-muted">
-              RaeLLM
+              Ask Rae
             </p>
-            <p className="mt-2 text-sm leading-relaxed">{CANNED_ANSWER}</p>
+            <p className="mt-2 text-sm leading-relaxed">
+              {panel.quote ? CANNED_ANSWER : INTRO_ANSWER}
+            </p>
 
             <a
               href={`mailto:${site.email}`}
@@ -118,6 +153,6 @@ export function AskRaeLLM() {
           </div>
         )}
       </div>
-    </div>
+    </AskRaeContext.Provider>
   );
 }

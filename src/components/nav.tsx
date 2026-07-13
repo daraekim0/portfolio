@@ -2,27 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Sparkles } from "lucide-react";
 import { site } from "@/lib/data";
-
-function useSeattleClock() {
-  const [time, setTime] = useState<string | null>(null);
-
-  useEffect(() => {
-    const formatter = new Intl.DateTimeFormat("en-US", {
-      timeZone: site.timeZone,
-      hour: "numeric",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: true,
-    });
-    const tick = () => setTime(formatter.format(new Date()));
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  return time;
-}
+import { useAskRae } from "@/components/ask-rae";
 
 function useHideOnScroll() {
   const [hidden, setHidden] = useState(false);
@@ -45,8 +28,16 @@ function useHideOnScroll() {
 }
 
 export function Nav() {
-  const time = useSeattleClock();
   const hidden = useHideOnScroll();
+  const { openBlank } = useAskRae();
+  const pathname = usePathname();
+
+  const handleNameClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <header
@@ -55,7 +46,11 @@ export function Nav() {
       }`}
     >
       <nav className="grid grid-cols-2 items-center gap-6 px-[5%] py-5 font-mono text-xs tracking-wide">
-        <Link href="/" className="text-sm font-medium tracking-normal">
+        <Link
+          href="/"
+          onClick={handleNameClick}
+          className="text-sm font-medium tracking-normal"
+        >
           {site.name}
         </Link>
         <div className="flex items-center">
@@ -64,16 +59,20 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="rounded-sm transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground active:text-foreground"
+                  className="rounded-sm transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700 active:text-neutral-700"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <span className="ml-auto text-muted tabular-nums">
-            {site.city}.{time ? ` ${time}` : ""}
-          </span>
+          <button
+            onClick={openBlank}
+            className="ml-auto flex items-center gap-1.5 rounded-sm text-muted uppercase tracking-wide transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
+          >
+            <Sparkles className="h-3.5 w-3.5" />
+            Ask Rae
+          </button>
         </div>
       </nav>
     </header>

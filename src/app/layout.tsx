@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/data";
-import { AskRaeLLM } from "@/components/ask-rae-llm";
+import { AskRaeProvider } from "@/components/ask-rae";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,8 +47,7 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
-        <AskRaeLLM />
+        <AskRaeProvider>{children}</AskRaeProvider>
       </body>
     </html>
   );
