@@ -10,10 +10,10 @@ export function Hero() {
             <p className="text-xs uppercase tracking-wide text-muted">
               {site.prevRole}
             </p>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs text-emerald-600">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-lime-500/40 bg-lime-400/15 px-2.5 py-1 text-xs text-lime-700">
               <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-[ping_2.4s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="absolute inline-flex h-full w-full animate-[ping_1.6s_cubic-bezier(0,0,0.2,1)_infinite] rounded-full bg-lime-500 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-lime-500" />
               </span>
               {site.availability}
             </span>
