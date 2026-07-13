@@ -3,33 +3,61 @@
 import { useEffect, useRef } from "react";
 
 const SIZE = 560;
-const EASE = 0.045;
+const MOUSE_EASE = 0.03;
+const MOUSE_INFLUENCE = 0.08;
+const MAX_NUDGE = 90;
 
 export function AnimatedGradient() {
   const blobRef = useRef<HTMLDivElement>(null);
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
+  const mouseTarget = useRef({ x: 0, y: 0 });
+  const mouseEased = useRef({ x: 0, y: 0 });
+  const hasMouse = useRef(false);
 
   useEffect(() => {
-    const initial = {
-      x: window.innerWidth * 0.8,
-      y: window.innerHeight * 0.75,
-    };
-    target.current = initial;
-    current.current = initial;
+    const center = () => ({
+      x: window.innerWidth * 0.72,
+      y: window.innerHeight * 0.65,
+    });
+    mouseTarget.current = center();
+    mouseEased.current = center();
 
     const onMove = (e: MouseEvent) => {
-      target.current = { x: e.clientX, y: e.clientY };
+      hasMouse.current = true;
+      mouseTarget.current = { x: e.clientX, y: e.clientY };
     };
     window.addEventListener("mousemove", onMove);
 
+    const start = performance.now();
     let frame: number;
-    const tick = () => {
-      current.current.x += (target.current.x - current.current.x) * EASE;
-      current.current.y += (target.current.y - current.current.y) * EASE;
+
+    const tick = (now: number) => {
+      const t = now - start;
+      const c = center();
+
+      // Autonomous drifting orbit -- the blob always wanders on its own.
+      const floatX = c.x + Math.sin(t * 0.00028) * 190;
+      const floatY = c.y + Math.cos(t * 0.00021) * 150;
+
+      // Mouse only nudges the orbit slightly, eased and clamped.
+      mouseEased.current.x +=
+        (mouseTarget.current.x - mouseEased.current.x) * MOUSE_EASE;
+      mouseEased.current.y +=
+        (mouseTarget.current.y - mouseEased.current.y) * MOUSE_EASE;
+
+      let nudgeX = 0;
+      let nudgeY = 0;
+      if (hasMouse.current) {
+        nudgeX = (mouseEased.current.x - c.x) * MOUSE_INFLUENCE;
+        nudgeY = (mouseEased.current.y - c.y) * MOUSE_INFLUENCE;
+        nudgeX = Math.max(-MAX_NUDGE, Math.min(MAX_NUDGE, nudgeX));
+        nudgeY = Math.max(-MAX_NUDGE, Math.min(MAX_NUDGE, nudgeY));
+      }
+
+      const x = floatX + nudgeX - SIZE / 2;
+      const y = floatY + nudgeY - SIZE / 2;
 
       if (blobRef.current) {
-        blobRef.current.style.transform = `translate3d(${current.current.x - SIZE / 2}px, ${current.current.y - SIZE / 2}px, 0)`;
+        blobRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       }
 
       frame = requestAnimationFrame(tick);
