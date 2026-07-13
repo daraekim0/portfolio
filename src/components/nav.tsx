@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MessageCircle } from "lucide-react";
 import { site } from "@/lib/data";
 import { useAskRae } from "@/components/ask-rae";
 
@@ -67,9 +68,11 @@ export function Nav() {
           </ul>
           <button
             onClick={openBlank}
-            className="ml-auto rounded-sm text-xs font-medium text-muted uppercase tracking-wide transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
+            aria-label="Ask"
+            title="Ask"
+            className="ml-auto rounded-sm text-muted transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
           >
-            Ask
+            <MessageCircle className="h-4 w-4" />
           </button>
         </div>
       </nav>

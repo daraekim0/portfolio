@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { X } from "lucide-react";
+import { MessageCircle, X } from "lucide-react";
 import { site } from "@/lib/data";
 
 const CANNED_ANSWER =
@@ -15,6 +15,8 @@ const CANNED_ANSWER =
 
 const INTRO_ANSWER =
   "Hi, I'm a small AI panel trained to talk about Rae's work. Highlight any line on the site and ask about it, or just email her directly below.";
+
+const PANEL_WIDTH = 400;
 
 type AskRaeContextValue = {
   openWithQuote: (quote: string) => void;
@@ -83,7 +85,62 @@ export function AskRaeProvider({ children }: { children: ReactNode }) {
 
   return (
     <AskRaeContext.Provider value={{ openWithQuote, openBlank }}>
-      {children}
+      <div className="flex min-h-full w-full flex-1">
+        <div className="min-w-0 flex-1">{children}</div>
+
+        <div
+          className={`shrink-0 overflow-hidden border-l border-line bg-background transition-[width] duration-500 ease-out ${
+            panel.open ? "w-[85vw] sm:w-[400px]" : "w-0"
+          }`}
+        >
+          <div
+            className="flex h-full flex-col"
+            style={{ width: PANEL_WIDTH }}
+          >
+            <div className="flex items-center justify-between border-b border-line px-6 py-5">
+              <span className="text-xs uppercase tracking-wide text-muted">
+                Ask
+              </span>
+              <button
+                onClick={close}
+                className="text-muted transition-colors hover:text-foreground"
+                aria-label="Close"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {panel.open && (
+              <div className="flex-1 overflow-y-auto px-6 py-6">
+                {panel.quote ? (
+                  <>
+                    <p className="text-xs uppercase tracking-wide text-muted">
+                      Your quote
+                    </p>
+                    <blockquote className="mt-2 border-l-2 border-accent pl-3 text-sm italic text-muted">
+                      &ldquo;{panel.quote}&rdquo;
+                    </blockquote>
+                  </>
+                ) : null}
+
+                <p className="mt-6 text-xs uppercase tracking-wide text-muted">
+                  Ask
+                </p>
+                <p className="mt-2 text-sm leading-relaxed">
+                  {panel.quote ? CANNED_ANSWER : INTRO_ANSWER}
+                </p>
+
+                <a
+                  href={`mailto:${site.email}`}
+                  className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs transition-colors hover:border-accent hover:text-accent"
+                >
+                  Email {site.name.split(" ")[0]}
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
       {selection && (
         <button
@@ -98,59 +155,13 @@ export function AskRaeProvider({ children }: { children: ReactNode }) {
             top: selection.y,
             transform: "translate(-50%, calc(-100% - 8px))",
           }}
-          className="z-50 rounded-full bg-foreground px-3.5 py-1.5 text-xs text-background shadow-lg transition-transform hover:scale-105"
+          aria-label="Ask about this quote"
+          title="Ask"
+          className="z-50 flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-background shadow-lg transition-transform hover:scale-105"
         >
-          Ask
+          <MessageCircle className="h-4 w-4" />
         </button>
       )}
-
-      <div
-        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-background shadow-2xl transition-transform duration-500 ease-out ${
-          panel.open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between border-b border-line px-6 py-5">
-          <span className="text-xs uppercase tracking-wide text-muted">
-            Ask
-          </span>
-          <button
-            onClick={close}
-            className="text-muted transition-colors hover:text-foreground"
-            aria-label="Close"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-
-        {panel.open && (
-          <div className="flex-1 overflow-y-auto px-6 py-6">
-            {panel.quote ? (
-              <>
-                <p className="text-xs uppercase tracking-wide text-muted">
-                  Your quote
-                </p>
-                <blockquote className="mt-2 border-l-2 border-accent pl-3 text-sm italic text-muted">
-                  &ldquo;{panel.quote}&rdquo;
-                </blockquote>
-              </>
-            ) : null}
-
-            <p className="mt-6 text-xs uppercase tracking-wide text-muted">
-              Ask
-            </p>
-            <p className="mt-2 text-sm leading-relaxed">
-              {panel.quote ? CANNED_ANSWER : INTRO_ANSWER}
-            </p>
-
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-line px-4 py-2 text-xs transition-colors hover:border-accent hover:text-accent"
-            >
-              Email {site.name.split(" ")[0]}
-            </a>
-          </div>
-        )}
-      </div>
     </AskRaeContext.Provider>
   );
 }
