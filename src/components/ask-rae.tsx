@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { Sparkles, X } from "lucide-react";
+import { X } from "lucide-react";
 import { site } from "@/lib/data";
 
 const CANNED_ANSWER =
@@ -98,22 +98,20 @@ export function AskRaeProvider({ children }: { children: ReactNode }) {
             top: selection.y,
             transform: "translate(-50%, calc(-100% - 8px))",
           }}
-          className="z-50 flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-xs text-background shadow-lg transition-transform hover:scale-105"
+          className="z-50 rounded-full bg-foreground px-3.5 py-1.5 text-xs text-background shadow-lg transition-transform hover:scale-105"
         >
-          <Sparkles className="h-3.5 w-3.5" />
-          Ask Rae
+          Ask
         </button>
       )}
 
       <div
-        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-background shadow-2xl transition-transform duration-300 ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col border-l border-line bg-background shadow-2xl transition-transform duration-500 ease-out ${
           panel.open ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-line px-6 py-5">
-          <span className="flex items-center gap-2 text-xs uppercase tracking-wide text-muted">
-            <Sparkles className="h-3.5 w-3.5" />
-            Ask Rae
+          <span className="text-xs uppercase tracking-wide text-muted">
+            Ask
           </span>
           <button
             onClick={close}
@@ -138,7 +136,7 @@ export function AskRaeProvider({ children }: { children: ReactNode }) {
             ) : null}
 
             <p className="mt-6 text-xs uppercase tracking-wide text-muted">
-              Ask Rae
+              Ask
             </p>
             <p className="mt-2 text-sm leading-relaxed">
               {panel.quote ? CANNED_ANSWER : INTRO_ANSWER}

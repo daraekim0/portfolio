@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Sparkles } from "lucide-react";
 import { site } from "@/lib/data";
 import { useAskRae } from "@/components/ask-rae";
 
@@ -68,10 +67,9 @@ export function Nav() {
           </ul>
           <button
             onClick={openBlank}
-            className="ml-auto flex items-center gap-1.5 rounded-sm text-muted uppercase tracking-wide transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
+            className="ml-auto rounded-sm text-xs font-medium text-muted uppercase tracking-wide transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
           >
-            <Sparkles className="h-3.5 w-3.5" />
-            Ask Rae
+            Ask
           </button>
         </div>
       </nav>
