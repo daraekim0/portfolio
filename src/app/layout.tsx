@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.role}`,
+  title: `${site.name} Portfolio`,
   description: site.headline,
   icons: {
     icon: [

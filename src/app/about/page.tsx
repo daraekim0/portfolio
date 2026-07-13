@@ -6,7 +6,7 @@ import { PhotoCollage } from "@/components/photo-collage";
 import { site, aboutInfo, interests } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: `About — ${site.name}`,
+  title: `About — ${site.name} Portfolio`,
   description: aboutInfo.paragraphs[0],
 };
 

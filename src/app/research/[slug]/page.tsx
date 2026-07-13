@@ -16,7 +16,7 @@ export async function generateMetadata({
   const paper = research.find((p) => p.slug === slug);
   if (!paper) return {};
   return {
-    title: `${paper.title} — ${site.name}`,
+    title: `${paper.title} — ${site.name} Portfolio`,
     description: paper.summary,
   };
 }
