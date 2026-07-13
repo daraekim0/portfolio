@@ -26,6 +26,7 @@ export const nodes = [
 
 export type Project = {
   slug: string;
+  category: string;
   year: string;
   title: string;
   description: string;
@@ -39,6 +40,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "orbit",
+    category: "Product Design",
     year: "2025",
     title: "Orbit — Team Calendar",
     description:
@@ -58,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     slug: "nectar",
+    category: "Commerce",
     year: "2024",
     title: "Nectar — Checkout Flow",
     description:
@@ -77,6 +80,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fable",
+    category: "EdTech",
     year: "2023",
     title: "Fable — Learning Platform",
     description:
