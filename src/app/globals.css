@@ -18,6 +18,7 @@
   --color-line: var(--line);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-ibm-plex-mono);
 }
 
 @layer base {

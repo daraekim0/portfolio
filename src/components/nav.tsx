@@ -54,24 +54,24 @@ export function Nav() {
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
-      <nav className="grid grid-cols-2 items-center gap-6 px-[5%] py-5 text-xs tracking-wide">
+      <nav className="grid grid-cols-2 items-center gap-6 px-[5%] py-5 font-mono text-xs tracking-wide">
         <Link href="/" className="text-sm font-medium tracking-normal">
           {site.name}
         </Link>
         <div className="flex items-center">
-          <ul className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide sm:flex">
+          <ul className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide text-muted sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="rounded-sm transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent active:text-accent"
+                  className="rounded-sm transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground active:text-foreground"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <span className="ml-auto tabular-nums">
+          <span className="ml-auto text-muted tabular-nums">
             {site.city}.{time ? ` ${time}` : ""}
           </span>
         </div>
