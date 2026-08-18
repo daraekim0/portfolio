@@ -3,9 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MessageCircle } from "lucide-react";
 import { site } from "@/lib/data";
-import { useAskRae } from "@/components/ask-rae";
 
 function useHideOnScroll() {
   const [hidden, setHidden] = useState(false);
@@ -29,7 +27,6 @@ function useHideOnScroll() {
 
 export function Nav() {
   const hidden = useHideOnScroll();
-  const { openBlank } = useAskRae();
   const pathname = usePathname();
 
   const handleNameClick = (e: React.MouseEvent) => {
@@ -53,27 +50,19 @@ export function Nav() {
         >
           {site.name}
         </Link>
-        <div className="flex items-center">
-          <ul className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide text-muted sm:flex">
+        <div className="flex items-center justify-end">
+          <ul className="hidden items-center gap-1 text-xs font-medium lowercase tracking-wide text-muted sm:flex">
             {site.nav.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="rounded-sm transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700 active:text-neutral-700"
+                  className="rounded-full px-3 py-1.5 transition-colors hover:bg-accent/10 hover:text-accent focus-visible:bg-accent/10 focus-visible:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:text-accent"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <button
-            onClick={openBlank}
-            aria-label="Ask"
-            title="Ask"
-            className="ml-auto rounded-sm text-muted transition-colors hover:text-neutral-700 focus-visible:text-neutral-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-700"
-          >
-            <MessageCircle className="h-4 w-4" />
-          </button>
         </div>
       </nav>
     </header>

@@ -32,7 +32,7 @@ export default async function WorkProjectPage({
       <Nav />
       <main className="flex-1">
         <header className="px-[5%] pt-16 pb-12 sm:pt-24">
-          <p className="text-xs uppercase tracking-wide text-muted">
+          <p className="text-xs tracking-wide text-muted">
             {project.category} — {project.year}
           </p>
           <h1 className="mt-4 max-w-3xl font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
@@ -40,17 +40,33 @@ export default async function WorkProjectPage({
           </h1>
 
           <div className="mt-8 max-w-3xl text-sm">
-            <p className="text-xs uppercase tracking-wide text-muted">Role</p>
+            <p className="text-xs tracking-wide text-muted">Role</p>
             <p className="mt-1">{project.role}</p>
           </div>
 
-          <div className="mt-12 aspect-[16/9] w-full bg-surface p-8 sm:p-14">
-            <ProjectMockup type={project.mockup} />
+          <div
+            className={`mt-12 aspect-[16/9] w-full overflow-hidden rounded-3xl shadow-lg ${
+              project.video ? "" : "bg-surface p-8 sm:p-14"
+            }`}
+          >
+            {project.video ? (
+              <video
+                className="h-full w-full object-cover"
+                src={project.video.src}
+                poster={project.video.poster}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <ProjectMockup type={project.mockup} />
+            )}
           </div>
         </header>
 
         <section className="bg-surface px-[5%] py-16">
-          <h2 className="text-xs uppercase tracking-wide text-muted">
+          <h2 className="text-xs tracking-wide text-muted">
             Overview
           </h2>
           <div className="mt-4 max-w-3xl space-y-4 text-lg leading-relaxed">
@@ -61,7 +77,7 @@ export default async function WorkProjectPage({
         </section>
 
         <section className="px-[5%] py-16">
-          <h2 className="text-xs uppercase tracking-wide text-muted">
+          <h2 className="text-xs tracking-wide text-muted">
             Contributions
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
@@ -77,7 +93,7 @@ export default async function WorkProjectPage({
         </section>
 
         <section className="bg-surface px-[5%] py-16">
-          <h2 className="text-xs uppercase tracking-wide text-muted">
+          <h2 className="text-xs tracking-wide text-muted">
             Timeline
           </h2>
           <div className="mt-8 grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">

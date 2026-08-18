@@ -4,7 +4,7 @@ import { site, nodes } from "@/lib/data";
 export function Contact() {
   return (
     <footer id="contact" className="border-t border-line px-[5%] py-16">
-      <p className="text-xs uppercase tracking-wide text-muted">
+      <p className="text-xs tracking-wide text-muted">
         Let&apos;s work together
       </p>
       <a
@@ -16,7 +16,7 @@ export function Contact() {
       </a>
 
       <div className="mt-14 max-w-sm">
-        <h2 className="text-xs uppercase tracking-wide text-muted">Nodes</h2>
+        <h2 className="text-xs tracking-wide text-muted">Nodes</h2>
         <ul className="mt-4 space-y-1">
           {nodes.map((node, i) => (
             <li key={node.label}>

@@ -6,7 +6,7 @@ import { research } from "@/lib/data";
 export function Research() {
   return (
     <section id="research" className="px-[5%] py-16">
-      <div className="flex items-center gap-2 border-t border-line pt-6 text-xs uppercase tracking-wide text-muted">
+      <div className="flex items-center gap-2 border-t border-line pt-6 text-xs tracking-wide text-muted">
         <FileText className="h-3.5 w-3.5" />
         Research
       </div>
@@ -23,7 +23,7 @@ export function Research() {
               {paper.title}
             </h3>
 
-            <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden bg-surface">
+            <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-surface shadow-sm transition-shadow duration-500 group-hover:shadow-xl">
               <Image
                 src={paper.cover.src}
                 alt={paper.cover.alt}

@@ -34,9 +34,29 @@ export type Project = {
   contributions: string[];
   timeline: string[];
   mockup: "browser-dashboard" | "phone-app" | "browser-map";
+  video?: { src: string; poster: string };
+  /** Not yet ready for public listing — hidden from the Work grid, still reachable at /work/[slug] for preview. */
+  draft?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "toss",
+    draft: true,
+    category: "TODO",
+    year: "TODO",
+    title: "Toss",
+    description: "TODO — one-line summary of the project.",
+    paragraphs: ["TODO — overview paragraphs."],
+    role: "TODO",
+    contributions: ["TODO"],
+    timeline: ["TODO"],
+    mockup: "browser-dashboard",
+    video: {
+      src: "/work/toss/toss-hero.mp4",
+      poster: "/work/toss/toss-poster.jpg",
+    },
+  },
   {
     slug: "orbit",
     category: "Product Design",

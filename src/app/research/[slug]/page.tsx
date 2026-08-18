@@ -30,7 +30,7 @@ function Figure({ image }: { image: ResearchImage }) {
         width={image.width}
         height={image.height}
         sizes="(max-width: 640px) 100vw, 80vw"
-        className="h-auto w-full bg-surface"
+        className="h-auto w-full rounded-2xl bg-surface"
       />
       {image.caption && (
         <figcaption className="mt-3 text-xs text-muted">
@@ -53,7 +53,7 @@ export default async function ResearchPaperPage({
       <Nav />
       <main className="flex-1">
         <header className="px-[5%] pt-16 pb-12 sm:pt-24">
-          <p className="text-xs uppercase tracking-wide text-muted">
+          <p className="text-xs tracking-wide text-muted">
             {paper.venue}
           </p>
           <h1 className="mt-4 max-w-3xl text-3xl leading-tight tracking-tight sm:text-4xl">
@@ -62,11 +62,11 @@ export default async function ResearchPaperPage({
 
           <div className="mt-8 grid max-w-3xl grid-cols-1 gap-6 text-sm sm:grid-cols-3">
             <div>
-              <p className="text-xs uppercase tracking-wide text-muted">Role</p>
+              <p className="text-xs tracking-wide text-muted">Role</p>
               <p className="mt-1">{paper.role}</p>
             </div>
             <div className="sm:col-span-2">
-              <p className="text-xs uppercase tracking-wide text-muted">
+              <p className="text-xs tracking-wide text-muted">
                 Authors
               </p>
               <p className="mt-1 text-muted">{paper.authors.join(", ")}</p>
@@ -89,7 +89,7 @@ export default async function ResearchPaperPage({
         </header>
 
         <section className="bg-surface px-[5%] py-16">
-          <h2 className="text-xs uppercase tracking-wide text-muted">
+          <h2 className="text-xs tracking-wide text-muted">
             Overview
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto]">
@@ -104,7 +104,7 @@ export default async function ResearchPaperPage({
                   <p className="text-4xl tracking-tight text-accent">
                     {stat.value}
                   </p>
-                  <p className="mt-1 max-w-[10rem] text-xs uppercase tracking-wide text-muted">
+                  <p className="mt-1 max-w-[10rem] text-xs tracking-wide text-muted">
                     {stat.label}
                   </p>
                 </div>
@@ -118,7 +118,7 @@ export default async function ResearchPaperPage({
             key={section.heading}
             className={`px-[5%] py-16 ${sIndex % 2 === 0 ? "bg-background" : "bg-surface"}`}
           >
-            <h2 className="text-xs uppercase tracking-wide text-muted">
+            <h2 className="text-xs tracking-wide text-muted">
               {section.heading}
             </h2>
             {section.intro && (

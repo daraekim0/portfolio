@@ -10,7 +10,7 @@ function TrafficLights() {
 
 export function BrowserDashboardMockup() {
   return (
-    <div className="h-full w-full overflow-hidden rounded-xl border border-line bg-[#111111] text-white">
+    <div className="h-full w-full overflow-hidden rounded-2xl border border-line bg-[#111111] text-white">
       <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
         <TrafficLights />
         <div className="mx-auto h-6 w-1/3 rounded-full bg-white/5" />
@@ -81,7 +81,7 @@ export function PhoneAppMockup() {
 
 export function BrowserMapMockup() {
   return (
-    <div className="h-full w-full overflow-hidden rounded-xl border border-line bg-[#f2f2f0]">
+    <div className="h-full w-full overflow-hidden rounded-2xl border border-line bg-[#f2f2f0]">
       <div className="flex items-center gap-3 border-b border-line bg-white px-4 py-3">
         <TrafficLights />
         <div className="mx-auto h-6 w-1/3 rounded-full bg-[#f2f2f0]" />

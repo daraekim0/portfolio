@@ -26,7 +26,7 @@ export default function AboutPage() {
             ))}
           </h1>
           <div>
-            <h2 className="text-xs uppercase tracking-wide text-muted">
+            <h2 className="text-xs tracking-wide text-muted">
               Info
             </h2>
             <div className="mt-4 max-w-md space-y-4 text-sm leading-relaxed text-muted">
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         <section className="grid grid-cols-1 gap-10 px-[5%] py-16 sm:grid-cols-2">
           <div>
-            <h2 className="text-xs uppercase tracking-wide text-muted">
+            <h2 className="text-xs tracking-wide text-muted">
               Things I Love To Do
             </h2>
             <ul className="mt-4 space-y-1 text-sm">

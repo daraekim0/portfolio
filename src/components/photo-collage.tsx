@@ -3,7 +3,7 @@ import { ImageIcon } from "lucide-react";
 function Placeholder({ className }: { className?: string }) {
   return (
     <div
-      className={`flex items-center justify-center rounded-lg border border-line bg-surface ${className ?? ""}`}
+      className={`flex items-center justify-center rounded-2xl border border-line bg-surface shadow-sm ${className ?? ""}`}
     >
       <ImageIcon className="h-5 w-5 text-muted" strokeWidth={1.5} />
     </div>
