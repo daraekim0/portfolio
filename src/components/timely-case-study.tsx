@@ -31,8 +31,6 @@ const methods = [
 export function TimelyCaseStudy() {
   return (
     <main className="timely-case" id="timely-top">
-      <header className="study-header"><Link href="/">Rae Kim</Link><span>Product Designer &amp; Researcher</span></header>
-      <nav className="study-nav" aria-label="Portfolio navigation"><Link href="/#work">Work</Link><Link href="/about">About</Link><a href={`mailto:${site.email}`}>Contact ↗</a></nav>
       <div className="study-container">
         <section className="study-project-meta">
           <div><h1>Timely</h1><p>UX Research · Product Design</p></div>

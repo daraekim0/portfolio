@@ -12,7 +12,7 @@ export const site = {
   nav: [
     { href: "/#work", label: "Work" },
     { href: "/about", label: "About" },
-    { href: "#", label: "Resume" },
+    { href: null, label: "Resume" },
   ],
 };
 
@@ -172,6 +172,7 @@ export type ResearchStat = {
 
 export type ResearchPaper = {
   slug: string;
+  displayTitle: string;
   year: string;
   venue: string;
   title: string;
@@ -189,6 +190,7 @@ export type ResearchPaper = {
 export const research: ResearchPaper[] = [
   {
     slug: "misinformation",
+    displayTitle: "Misinformation & Resilience",
     year: "2026",
     venue: "CHI 2026",
     title:
@@ -315,6 +317,7 @@ export const research: ResearchPaper[] = [
   },
   {
     slug: "remix-authorship",
+    displayTitle: "Remix & Creative Agency",
     year: "2026",
     venue: "CHI 2026",
     title:

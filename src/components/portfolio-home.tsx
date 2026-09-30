@@ -11,28 +11,20 @@ const filters = ["All", "Product Design", "Research"] as const;
 export function PortfolioHome() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("All");
   const works = projects.filter((project) => !project.draft);
-  const [papersOpen, setPapersOpen] = useState(false);
   return (
-    <main className="portfolio-home" id="top">
+    <main className="portfolio-home">
       <section className="intro-card" aria-label="Introduction">
-        <nav className="intro-nav" aria-label="Main navigation">
-          <a href="#work">Selected work</a>
-          <Link href="/about">About</Link>
-        </nav>
         <div className="business-card-details">
-          <h1>{site.name}</h1>
           <p>Product Designer &amp; Researcher</p>
-          <a href={`mailto:${site.email}`}>{site.email}</a>
           <p>MS HCDE @ University of Washington</p>
-          <p>Seattle, WA</p>
         </div>
         <div className="personal-seal">
           <svg viewBox="0 0 400 115" aria-hidden="true">
             <defs><path id="seal-arc" d="M 20,105 Q 200,-55 380,105" /></defs>
             <text><textPath href="#seal-arc" startOffset="50%" textAnchor="middle">CURIOUS, CONSIDERED, HUMAN</textPath></text>
           </svg>
-          <p className="seal-location">Seattle, WA · est. in curiosity</p>
-          <p className="seal-message">Thoughtful design.<br />A little human warmth.</p>
+          <p className="seal-location">Seattle, WA</p>
+          <p className="seal-message">Driven by why, creating intuitive experiences for positive impact.</p>
           
         </div>
         <a className="scroll-cue" href="#work">Scroll to explore <span>↓</span></a>
@@ -40,22 +32,13 @@ export function PortfolioHome() {
       </section>
 
       <section className="selected-section" id="work">
-        <header className="work-nav">
-          <a className="wordmark" href="#top">rk<span>✳</span></a>
-          <nav aria-label="Portfolio sections">
-            <a href="#work">Projects</a><Link href="/about">About</Link><a href={`mailto:${site.email}`}>Contact</a>
-          </nav>
-          <a className="contact-pill" href={`mailto:${site.email}`}>Let’s talk ↗</a>
-        </header>
         <div className="projects-heading">
-          <p className="eyebrow">A few things I’ve put care into</p>
-          <h2>Projects<sup>({works.length + 1})</sup></h2>
+          <h1>Projects</h1>
           <div className="project-filters" aria-label="Filter projects">
             {filters.map((item) => <button key={item} onClick={() => setFilter(item)} aria-pressed={filter === item}>{item}</button>)}
           </div>
         </div>
         <div className="project-table">
-          <div className="table-labels"><span>Index</span><span>Project</span><span>Discipline</span><span>Year</span><span /></div>
           {filter !== "Research" && works.map((project, index) => (
             <Link className="project-row" key={project.slug} href={`/work/${project.slug}`}>
               <span className="row-index">0{index + 1}</span>
@@ -64,26 +47,18 @@ export function PortfolioHome() {
               {project.slug === "timely" ? (
                 <div className="floating-preview preview-0" aria-hidden="true"><TimelyVisual frame="timer" /></div>
               ) : project.video ? (
-                <div className="floating-preview research-preview" aria-hidden="true"><Image src={project.video.poster} alt="" fill sizes="340px" className="object-cover" /></div>
+                <div className="floating-preview research-preview" aria-hidden="true"><Image src={project.video.poster} alt="" fill sizes="(max-width: 1000px) 400px, 520px" className="object-cover" /></div>
               ) : null}
             </Link>
           ))}
-          {filter !== "Product Design" && (
-            <div className="papers-group">
-              <button type="button" className="project-row papers-toggle" onClick={() => setPapersOpen((open) => !open)} aria-expanded={papersOpen} aria-controls="papers-list">
-                <span className="row-index">04</span>
-                <span className="project-row-title">Research Papers<small>{research.length} publications · CHI 2026</small></span>
-                <span className="row-category">Research</span><span className="row-year">2026</span><span className="row-arrow" aria-hidden="true">{papersOpen ? "−" : "+"}</span>
-              </button>
-              <div id="papers-list" className="papers-list" hidden={!papersOpen}>
-                {research.map((paper) => (
-                  <Link href={`/research/${paper.slug}`} className="paper-index-entry" key={paper.slug}>
-                    <span>{paper.venue}</span><h3>{paper.title}</h3><span aria-hidden="true">↗</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
+          {filter !== "Product Design" && research.map((paper, index) => (
+            <Link className="project-row" key={paper.slug} href={`/research/${paper.slug}`}>
+              <span className="row-index">{String(works.length + index + 1).padStart(2, "0")}</span>
+              <h3>{paper.displayTitle}<small>{paper.venue}</small></h3>
+              <span className="row-category">Research</span><span className="row-year">{paper.year}</span><span className="row-arrow">↗</span>
+              <div className="floating-preview research-preview" aria-hidden="true"><Image src={paper.cover.src} alt="" fill sizes="(max-width: 1000px) 400px, 520px" className="object-cover" /></div>
+            </Link>
+          ))}
         </div>
         <div className="work-note"><span>Research-led. Detail-minded. Always curious.</span></div>
         <footer className="portfolio-footer"><p>Have something<br /><em>in mind?</em></p><a href={`mailto:${site.email}`}>Let’s make it meaningful ↗</a><div><span>© 2026 Rae Kim</span><a href="#top">Back to top ↑</a></div></footer>

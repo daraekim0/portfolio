@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/data";
+import { Nav } from "@/components/nav";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -43,9 +44,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${figtree.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col"><Nav />{children}</body>
     </html>
   );
 }

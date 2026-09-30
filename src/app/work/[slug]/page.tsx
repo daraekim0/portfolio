@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { projects, site } from "@/lib/data";
 import { ProjectPending } from "@/components/project-pending";
 import { TimelyCaseStudy } from "@/components/timely-case-study";
-import { Nav } from "@/components/nav";
 import { ProjectMockup } from "@/components/mockups";
 
 export function generateStaticParams() {
@@ -33,7 +32,6 @@ export default async function WorkProjectPage({
 
   return (
     <>
-      <Nav />
       <main className="flex-1">
         <header className="px-[5%] pt-16 pb-12 sm:pt-24">
           <p className="text-xs tracking-wide text-muted">
