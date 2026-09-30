@@ -1,17 +1,5 @@
-import { Nav } from "@/components/nav";
-import { Hero } from "@/components/hero";
-import { Work } from "@/components/work";
-import { Research } from "@/components/research";
+import { PortfolioHome } from "@/components/portfolio-home";
 
 export default function Home() {
-  return (
-    <>
-      <Nav />
-      <main className="flex-1">
-        <Hero />
-        <Work />
-        <Research />
-      </main>
-    </>
-  );
+  return <PortfolioHome />;
 }

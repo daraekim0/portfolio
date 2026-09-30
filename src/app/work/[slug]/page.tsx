@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects, site } from "@/lib/data";
+import { ProjectPending } from "@/components/project-pending";
+import { TimelyCaseStudy } from "@/components/timely-case-study";
 import { Nav } from "@/components/nav";
 import { ProjectMockup } from "@/components/mockups";
 
@@ -26,6 +28,8 @@ export default async function WorkProjectPage({
   const { slug } = await params;
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
+  if (slug === "timely") return <TimelyCaseStudy />;
+  if (project.pending) return <ProjectPending title={project.title} />;
 
   return (
     <>

@@ -7,7 +7,7 @@ export const site = {
     "Digital product designer crafting clear, considered experiences for complex problems.",
   intro:
     "I work across research, interaction design, and design systems to help teams ship products people actually understand.",
-  email: "dare11021102@gmail.com",
+  email: "raekimwork@gmail.com",
   city: "Seattle",
   nav: [
     { href: "/#work", label: "Work" },
@@ -17,7 +17,7 @@ export const site = {
 };
 
 export const nodes = [
-  { label: "Email", href: "mailto:dare11021102@gmail.com" },
+  { label: "Email", href: "mailto:raekimwork@gmail.com" },
   { label: "LinkedIn", href: "#" },
   { label: "Instagram", href: "#" },
   { label: "Resume", href: "#" },
@@ -37,20 +37,48 @@ export type Project = {
   video?: { src: string; poster: string };
   /** Not yet ready for public listing — hidden from the Work grid, still reachable at /work/[slug] for preview. */
   draft?: boolean;
+  cover?: string;
+  pending?: boolean;
 };
 
 export const projects: Project[] = [
   {
+    slug: "timely",
+    category: "UX Research & Design",
+    year: "",
+    title: "Timely — Focus, at your own pace",
+    description: "Helping college students with ADHD turn overwhelming to-dos into manageable focus sessions.",
+    paragraphs: ["An app and physical timer concept connecting task selection with flexible focus sessions."],
+    role: "UX Researcher & Designer",
+    contributions: ["Interviews and research synthesis", "App and physical-timer design", "User testing"],
+    timeline: [],
+    mockup: "phone-app",
+    cover: "/work/timely/task-flow.png",
+  },
+  {
+    slug: "dark-arts-software",
+    pending: true,
+    category: "",
+    year: "",
+    title: "Dark Arts Software",
+    description: "",
+    paragraphs: [],
+    role: "",
+    contributions: [],
+    timeline: [],
+    mockup: "browser-dashboard",
+  },
+  {
     slug: "toss",
-    draft: true,
-    category: "TODO",
-    year: "TODO",
+    pending: true,
+    category: "",
+    year: "",
     title: "Toss",
-    description: "TODO — one-line summary of the project.",
-    paragraphs: ["TODO — overview paragraphs."],
-    role: "TODO",
-    contributions: ["TODO"],
-    timeline: ["TODO"],
+    description: "",
+    paragraphs: [],
+    role: "",
+    contributions: [],
+    timeline: [],
     mockup: "browser-dashboard",
     video: {
       src: "/work/toss/toss-hero.mp4",
@@ -59,6 +87,7 @@ export const projects: Project[] = [
   },
   {
     slug: "orbit",
+    draft: true,
     category: "Product Design",
     year: "2025",
     title: "Orbit — Team Calendar",
@@ -79,6 +108,7 @@ export const projects: Project[] = [
   },
   {
     slug: "nectar",
+    draft: true,
     category: "Commerce",
     year: "2024",
     title: "Nectar — Checkout Flow",
@@ -99,6 +129,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fable",
+    draft: true,
     category: "EdTech",
     year: "2023",
     title: "Fable — Learning Platform",
