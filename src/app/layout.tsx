@@ -3,6 +3,7 @@ import { Inter, Figtree, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/data";
 import { Nav } from "@/components/nav";
+import { ContextMenuGuard } from "@/components/context-menu-guard";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -47,7 +48,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${figtree.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><Nav />{children}</body>
+      <body className="min-h-full flex flex-col"><ContextMenuGuard /><Nav />{children}</body>
     </html>
   );
 }

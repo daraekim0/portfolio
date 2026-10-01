@@ -28,7 +28,7 @@ export default async function WorkProjectPage({
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
   if (slug === "timely") return <TimelyCaseStudy />;
-  if (project.pending) return <ProjectPending title={project.title} />;
+  if (project.pending) return <ProjectPending title={project.title} video={project.video} />;
 
   return (
     <>

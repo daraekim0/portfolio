@@ -34,7 +34,7 @@ export type Project = {
   contributions: string[];
   timeline: string[];
   mockup: "browser-dashboard" | "phone-app" | "browser-map";
-  video?: { src: string; poster: string };
+  video?: { src: string; poster: string; loopSrc?: string };
   /** Not yet ready for public listing — hidden from the Work grid, still reachable at /work/[slug] for preview. */
   draft?: boolean;
   cover?: string;
@@ -81,8 +81,9 @@ export const projects: Project[] = [
     timeline: [],
     mockup: "browser-dashboard",
     video: {
-      src: "/work/toss/toss-hero.mp4",
-      poster: "/work/toss/toss-poster.jpg",
+      src: "/work/toss/toss-edge-whites-intro-v8.mp4",
+      loopSrc: "/work/toss/toss-edge-whites-loop-v8.mp4",
+      poster: "/work/toss/toss-edge-whites-poster-v8.jpg",
     },
   },
   {

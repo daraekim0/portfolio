@@ -47,7 +47,9 @@ export function PortfolioHome() {
               {project.slug === "timely" ? (
                 <div className="floating-preview preview-0" aria-hidden="true"><TimelyVisual frame="timer" /></div>
               ) : project.video ? (
-                <div className="floating-preview research-preview" aria-hidden="true"><Image src={project.video.poster} alt="" fill sizes="(max-width: 1000px) 400px, 520px" className="object-cover" /></div>
+                <div className="floating-preview research-preview" aria-hidden="true">
+                  <Image src={project.video.poster} alt="" fill sizes="(max-width: 1000px) 300px, 380px" className="object-cover" />
+                </div>
               ) : null}
             </Link>
           ))}
@@ -56,7 +58,7 @@ export function PortfolioHome() {
               <span className="row-index">{String(works.length + index + 1).padStart(2, "0")}</span>
               <h3>{paper.displayTitle}<small>{paper.venue}</small></h3>
               <span className="row-category">Research</span><span className="row-year">{paper.year}</span><span className="row-arrow">↗</span>
-              <div className="floating-preview research-preview" aria-hidden="true"><Image src={paper.cover.src} alt="" fill sizes="(max-width: 1000px) 400px, 520px" className="object-cover" /></div>
+              <div className="floating-preview research-preview" aria-hidden="true"><Image src={paper.cover.src} alt="" fill sizes="(max-width: 1000px) 300px, 380px" className="object-cover" /></div>
             </Link>
           ))}
         </div>
