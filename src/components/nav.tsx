@@ -9,7 +9,7 @@ export function Nav() {
   const isHome = pathname === "/";
 
   return (
-    <header id="top" className={`site-header${isHome ? " site-header-dark site-header-home" : ""}`}>
+    <header id="top" className={`site-header${isHome ? " site-header-home" : ""}`}>
       <Link href="/#top" className="rae-wordmark" aria-label="Rae Kim, home">{site.name}</Link>
       <nav aria-label="Main navigation">
         {site.nav.map((link) => link.href ? (
